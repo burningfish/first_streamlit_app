@@ -10,3 +10,7 @@ st.text('🥑🍞Avocado Toast')
 
 st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
+import pandas as pa
+my_fruit_list = pa.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+st.dataframe(my_fruit_list)
+
