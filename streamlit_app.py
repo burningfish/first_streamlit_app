@@ -12,11 +12,13 @@ st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 import pandas as pa
 my_fruit_list = pa.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-my_fruit_list = my_fruit_list.set_index('Fruit') 
+my_fruit_list = my_fruit_list.set_index('Fruit')  # set index as Fruit (name)
 
 # Pick list so users can pick what fruits they want
-st.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
+fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
+fruits_to_show = my_fruit_list.loc[fruits_selected]
+
 
 # display the table on screen
-st.dataframe(my_fruit_list)
+st.dataframe(fruits_to_show)
 
