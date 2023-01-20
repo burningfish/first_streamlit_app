@@ -18,7 +18,12 @@ my_fruit_list = my_fruit_list.set_index('Fruit')  # set index as Fruit (name)
 fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 
-
 # display the table on screen
 st.dataframe(fruits_to_show)
+
+# New section to display fruityvice api response
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
+
 
