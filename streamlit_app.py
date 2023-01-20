@@ -28,7 +28,7 @@ st.dataframe(fruits_to_show)
 
 #### Show selected fruit info from Fruityvice
 # Create fruityvice request/response function
-def get_fruityvice_data(this_fruit_choice)
+def get_fruityvice_data(this_fruit_choice):
     fv_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
     # clean up json response and output on screen
     fv_normalized = pa.json_normalize(fv_response.json())
