@@ -31,3 +31,8 @@ fv_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 fv_normalized = pa.json_normalize(fv_response.json())
 st.dataframe(fv_normalized)
+
+import snowflake.connector
+
+
+
