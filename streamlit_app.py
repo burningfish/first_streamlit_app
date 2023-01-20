@@ -23,10 +23,10 @@ st.dataframe(fruits_to_show)
 
 # New section to display fruityvice api response
 st.header("Fruityvice Fruit Advice!")
+fruit_choice = "Kiwi"
 
 import requests
-fv_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fv_response.json())
+fv_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 fv_normalized = pa.json_normalize(fv_response.json())
 st.dataframe(fv_normalized)
