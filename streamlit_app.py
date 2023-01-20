@@ -34,5 +34,6 @@ st.dataframe(fv_normalized)
 
 import snowflake.connector
 
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
 
