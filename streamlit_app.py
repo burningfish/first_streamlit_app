@@ -36,7 +36,7 @@ import snowflake.connector
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
+my_cur.execute("select * from fruit_load_list order by fruit_name")
 my_data_rows = my_cur.fetchall()
 
 st.header("The fruit load list is: ")
@@ -44,5 +44,6 @@ st.dataframe(my_data_rows)
 
 # Allow users to add to the fruit list
 fruit_to_add = st.text_input('Add a new fruit')
+st.write('Thanks for adding ', fruit_to_add)
 
-
+my_cur.execute(insert into fruit_load_list values ('from streamlit'))
