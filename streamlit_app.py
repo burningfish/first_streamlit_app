@@ -62,7 +62,7 @@ if st.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     st.dataframe(my_data_rows)
 
-  st.stop() # while debugging
+st.stop() # while debugging
     
 # Allow users to add to the fruit list
 fruit_to_add = st.text_input('Add a new fruit')
