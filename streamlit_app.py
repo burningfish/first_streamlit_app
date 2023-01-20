@@ -28,5 +28,5 @@ import requests
 fv_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 st.text(fv_response.json())
 
-fv_normalized = pandas.json_normalize(fv_response.json())
+fv_normalized = pa.json_normalize(fv_response.json())
 st.dataframe(fv_normalized)
