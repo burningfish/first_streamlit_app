@@ -29,14 +29,21 @@ st.dataframe(fruits_to_show)
 #### Show selected fruit info from Fruityvice
 # New section to display fruityvice api response
 st.header("Fruityvice Fruit Advice!")
-fruit_choice = st.text_input('What fruit would you like information about?', 'Kiwi')
-st.write('The user entered', fruit_choice)
+try:
+  fruit_choice = st.text_input('What fruit would you like information about?')
+  
+  if not fruit_choice:
+    st.error("Please enter a fruit to get information.")
+  else:
+    # import request
+    fv_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    # clean up json response and output on screen
+    fv_normalized = pa.json_normalize(fv_response.json())
+    st.dataframe(fv_normalized)
 
-fv_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
-fv_normalized = pa.json_normalize(fv_response.json())
-st.dataframe(fv_normalized)
-
+except URLError as e:
+  st.error()
+    
 st.stop() # while debugging
 #### Snowflake section - show fruit list and allow users to add
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
