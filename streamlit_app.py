@@ -66,9 +66,9 @@ st.stop() # while debugging
     
 # Allow users to add to the fruit list
 def insert_snowflake_fruit(new_fruit):
-    with my_cnx.cursor as my_cur
-    my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
-    return "Thanks for adding " + new_fruit
+    with my_cnx.cursor as my_cur:
+        my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
+        return "Thanks for adding " + new_fruit
 
 fruit_to_add = st.text_input('What fruit would you like to add?')
 if st.button('Add a fruit'):
